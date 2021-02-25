@@ -1,13 +1,14 @@
-import ReactPairs from '../src/main';
-import ReactDOM from 'react-dom';
+import ReactDemokit from '@jswork/react-demokit';
 import React from 'react';
-import nxPickPairs from '@feizheng/next-pick-pairs';
+import ReactDOM from 'react-dom';
+import ReactPairs from '../src/main';
+import '@jswork/next-pick-pairs';
+
 import './assets/style.scss';
 
 class App extends React.Component {
-  componentDidMount() {}
   render() {
-    var obj = {
+    const obj = {
       nickname: null,
       uid: 'UR1785049326',
       job: null,
@@ -30,22 +31,23 @@ class App extends React.Component {
     };
 
     const items = nx.pickPairs(obj, ['uid', 'is_staff', 'is_active']);
-
     return (
-      <div className="app-container">
-        <h1>Pairs with template</h1>
+      <ReactDemokit
+        className="p-3 app-container"
+        url="https://github.com/afeiship/react-pairs">
         <ReactPairs
           items={items}
           template={({ item, index }) => {
             console.log(item);
             return (
               <div className="is-item" key={item.key}>
-                <strong>{item.key} </strong> - <em>{item.value + ''}</em>
+                <strong>{item.key} </strong> -{' '}
+                <em className="tag is-success">{item.value + ''}</em>
               </div>
             );
           }}
         />
-      </div>
+      </ReactDemokit>
     );
   }
 }
