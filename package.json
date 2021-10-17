@@ -1,6 +1,6 @@
 {
   "name": "@jswork/weibo-ckeditor-upload-adpater",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Weibo ckeditor upload adapter.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -41,5 +41,12 @@
     "@afeiship/next-leancloud-options": "^1.0.2",
     "@jswork/next": "^1.0.9",
     "@jswork/next-weibo-oss": "^1.0.0"
-  }
+  },
+  "keywords": [
+    "weibo",
+    "oss",
+    "ckeditor",
+    "adapter",
+    "upload"
+  ]
 }
