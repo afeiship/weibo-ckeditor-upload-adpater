@@ -12,14 +12,14 @@ export default class {
   constructor(inLoader, inOptions) {
     this.loader = inLoader;
     this.options = inOptions;
-    this.lcOpts = new NxLcOptions({ id: WEIBO_LC_ID });
+    this.lcOpts = new NxLcOptions({ fetch: window.fetch.bind(window), id: WEIBO_LC_ID });
   }
 
   upload() {
     return new Promise((resolve) => {
       this.weiboOssClient().then(() => {
         this.loader.file.then((file) => {
-          this.weiboOss(file).then((url) => {
+          this.weiboOss.upload(file).then((url) => {
             resolve({ default: url });
           });
         });
@@ -27,10 +27,13 @@ export default class {
     });
   }
 
-  private async weiboOssClient() {
+  private weiboOssClient() {
     if (this.weiboOss) return Promise.resolve(this.weiboOss);
-    const { value } = await this.lcOpts.get();
-    this.weiboOss = new NxWeiboOss(value);
-    return this.weiboOss;
+    return new Promise((resolve, reject) => {
+      this.lcOpts.get().then((res) => {
+        this.weiboOss = new NxWeiboOss(res.value);
+        resolve(this.weiboOss);
+      });
+    });
   }
 }

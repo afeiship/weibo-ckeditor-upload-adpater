@@ -38,7 +38,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@afeiship/next-leancloud-options": "^1.0.3",
+    "@afeiship/next-leancloud-options": "^1.0.4",
     "@jswork/next": "^1.0.9",
     "@jswork/next-weibo-oss": "^1.0.0"
   },
