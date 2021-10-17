@@ -12,15 +12,16 @@ export default class {
   constructor(inLoader, inOptions) {
     this.loader = inLoader;
     this.options = inOptions;
-    this.lcOpts = new NxLcOptions({ fetch, id: WEIBO_LC_ID });
+    this.lcOpts = new NxLcOptions({ id: WEIBO_LC_ID });
   }
 
-  async upload() {
-    await this.weiboOssClient();
+  upload() {
     return new Promise((resolve) => {
-      this.loader.file.then((file) => {
-        this.weiboOss(file).then((url) => {
-          resolve({ default: url });
+      this.weiboOssClient().then(() => {
+        this.loader.file.then((file) => {
+          this.weiboOss(file).then((url) => {
+            resolve({ default: url });
+          });
         });
       });
     });
