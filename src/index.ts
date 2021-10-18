@@ -20,8 +20,8 @@ export default class {
     return new Promise((resolve) => {
       this.weiboOssClient().then(() => {
         this.loader.file.then((file) => {
-          this.weiboOss.upload(file).then((url) => {
-            resolve({ default: url });
+          this.weiboOss.upload(file).then((res) => {
+            resolve({ default: res[0]?.url });
           });
         });
       });
