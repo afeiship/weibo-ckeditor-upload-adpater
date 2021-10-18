@@ -15,14 +15,17 @@ export default class {
   }
 
   upload() {
-    return new Promise((resolve) => {
-      this.weiboOssClient().then(() => {
-        this.loader.file.then((file) => {
-          this.weiboOss.upload(file).then((res) => {
-            resolve({ default: res[0]?.url });
-          });
-        });
-      });
+    return new Promise((resolve, reject) => {
+      Promise.all([this.loader.file, this.weiboOssClient()])
+        .then(([file]) => {
+          this.weiboOss
+            .upload(file)
+            .then((res) => {
+              resolve({ default: res[0]?.url });
+            })
+            .catch(reject);
+        })
+        .catch(reject);
     });
   }
 
