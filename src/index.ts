@@ -2,6 +2,7 @@ import NxWeiboOss from '@jswork/next-weibo-oss';
 import NxLcOptions from '@afeiship/next-leancloud-options';
 
 const WEIBO_LC_ID = '60f768f6d9f1465d3b1d5c43';
+const fetch = window.fetch.bind(window);
 
 export default class {
   private loader;
@@ -12,7 +13,7 @@ export default class {
   constructor(inLoader, inOptions) {
     this.loader = inLoader;
     this.options = inOptions;
-    this.lcOpts = new NxLcOptions({ fetch: window.fetch.bind(window), id: WEIBO_LC_ID });
+    this.lcOpts = new NxLcOptions({ fetch, id: WEIBO_LC_ID });
   }
 
   upload() {
@@ -29,9 +30,9 @@ export default class {
 
   private weiboOssClient() {
     if (this.weiboOss) return Promise.resolve(this.weiboOss);
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.lcOpts.get().then((res) => {
-        this.weiboOss = new NxWeiboOss(res.value);
+        this.weiboOss = new NxWeiboOss(`SUB=${res.value}`);
         resolve(this.weiboOss);
       });
     });
