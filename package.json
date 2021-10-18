@@ -1,6 +1,6 @@
 {
   "name": "@jswork/weibo-ckeditor-upload-adpater",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Weibo ckeditor upload adapter.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
