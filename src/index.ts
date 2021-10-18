@@ -6,13 +6,11 @@ const fetch = window.fetch.bind(window);
 
 export default class {
   private loader;
-  private options;
   private lcOpts;
   private weiboOss;
 
-  constructor(inLoader, inOptions) {
+  constructor(inLoader) {
     this.loader = inLoader;
-    this.options = inOptions;
     this.lcOpts = new NxLcOptions({ fetch, id: WEIBO_LC_ID });
   }
 
