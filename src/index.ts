@@ -32,7 +32,7 @@ export default class {
     if (this.weiboOss) return Promise.resolve(this.weiboOss);
     return new Promise((resolve) => {
       this.lcOpts.get().then((res) => {
-        this.weiboOss = new NxWeiboOss(`SUB=${res.value}`);
+        this.weiboOss = new NxWeiboOss(res.value);
         resolve(this.weiboOss);
       });
     });
