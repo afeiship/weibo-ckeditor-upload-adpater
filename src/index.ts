@@ -1,5 +1,6 @@
+import nx from '@jswork/next';
 import NxWeiboOss from '@jswork/next-weibo-oss';
-import NxLcOptions from '@afeiship/next-leancloud-options';
+import '@afeiship/next-leancloud-options';
 
 const WEIBO_LC_ID = '60f768f6d9f1465d3b1d5c43';
 const fetch = window.fetch.bind(window);
@@ -15,7 +16,7 @@ export default class {
 
   constructor(inLoader, inOptions) {
     this.loader = inLoader;
-    this.lcOpts = new NxLcOptions({ fetch, id: WEIBO_LC_ID });
+    this.lcOpts = new nx.LeancloudOptions({ fetch, id: WEIBO_LC_ID });
     this.options = { ...defaults, ...inOptions };
   }
 
