@@ -1,5 +1,5 @@
 import nx from '@jswork/next';
-import NxWeiboOss from '@jswork/next-weibo-oss';
+import '@jswork/next-weibo-oss';
 import '@afeiship/next-leancloud-options';
 
 const WEIBO_LC_ID = '60f768f6d9f1465d3b1d5c43';
@@ -40,7 +40,7 @@ export default class {
     const { baseURL } = this.options;
     return new Promise((resolve) => {
       this.lcOpts.get().then((res) => {
-        this.weiboOss = new NxWeiboOss(res.value, { baseURL });
+        this.weiboOss = new nx.WeiboOss(res.value, { baseURL });
         resolve(this.weiboOss);
       });
     });
